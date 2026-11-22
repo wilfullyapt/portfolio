@@ -52,12 +52,6 @@
       "language": "Python"
     },
     {
-      "name": "resume-rewriter",
-      "description": "Context Aware LLM Resume Rewriter",
-      "url": "https://github.com/wilfullyapt/resume-rewriter",
-      "language": "Python"
-    },
-    {
       "name": "cluster-mcp",
       "description": "proxmox-mcp: FastAPI wrapper providing repeatable status, inventory, and health tools for Proxmox clusters (Ceph, nodes, VMs, tasks). LXC + Docker deploy with auto-restart and one-line updates.",
       "url": "https://github.com/wilfullyapt/cluster-mcp",
