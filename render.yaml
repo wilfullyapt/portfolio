@@ -1,0 +1,20 @@
+# Blueprint for William's portfolio. This file does not create the
+# Render service by itself — connect the repo as a Blueprint later.
+services:
+  - type: web
+    name: portfolio
+    runtime: static
+    branch: main
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./dist
+    autoDeployTrigger: commit
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin

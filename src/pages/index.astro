@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/Layout.astro';
+import profileData from '../data/profile.json';
+import type { Profile } from '../data/types';
+import { isPlaceholder } from '../lib/placeholders';
+
+const profile = profileData as Profile;
+const pageTitle = `${profile.name} — Portfolio`;
+const pageDescription = `${profile.name}, ${profile.location}. ${profile.shortBio}`;
+const github = profile.contact.links.find(
+  (link) => !isPlaceholder(link.url) && /github\.com/i.test(link.url),
+);
+---
+
+<Layout title={pageTitle} description={pageDescription} name={profile.name}>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-name">
+      <div class="wrap">
+        <p class="eyebrow">{profile.location}</p>
+        <h1 id="hero-name">{profile.name}</h1>
+        <p class:list={['headline', isPlaceholder(profile.headline) && 'placeholder']}>
+          {profile.headline}
+        </p>
+        <p class="lead">{profile.shortBio}</p>
+        <div class="actions">
+          <a class="button button-primary" href="#projects">View projects</a>
+          <a class="button button-secondary" href="#contact">Contact</a>
+          {
+            github && (
+              <a class="button button-secondary" href={github.url} rel="me noopener noreferrer">
+                GitHub
+              </a>
+            )
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-heading">
+      <div class="wrap">
+        <h2 id="about-heading">About</h2>
+        <div class="prose">
+          <p class:list={[isPlaceholder(profile.about) && 'placeholder']}>
+            {profile.about}
+          </p>
+          <p>Based in {profile.location}.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-heading">
+      <div class="wrap">
+        <h2 id="skills-heading">Skills</h2>
+        <div class="skill-groups">
+          {
+            profile.skills.map((group) => (
+              <div class="skill-group">
+                <h3>{group.category}</h3>
+                <ul class="chips">
+                  {group.items.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-heading">
+      <div class="wrap">
+        <h2 id="projects-heading">Projects</h2>
+        <div class="project-grid">
+          {
+            profile.projects.map((project) => (
+              <a
+                class="card"
+                href={project.url}
+                rel="noopener noreferrer"
+              >
+                <h3>{project.name}</h3>
+                {project.language && <p class="meta">{project.language}</p>}
+                <p>{project.description}</p>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" aria-labelledby="experience-heading">
+      <div class="wrap">
+        <h2 id="experience-heading">Experience</h2>
+        <ul class="experience-list">
+          {
+            profile.experience.map((item) => (
+              <li class="experience-item">
+                <h3 class:list={[isPlaceholder(item.role) && 'placeholder']}>{item.role}</h3>
+                <p class:list={['org', isPlaceholder(item.organization) && 'placeholder']}>
+                  {item.organization}
+                </p>
+                <p class:list={['dates', isPlaceholder(item.dates) && 'placeholder']}>
+                  {item.dates}
+                </p>
+                <p class:list={[isPlaceholder(item.summary) && 'placeholder']}>{item.summary}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="wrap">
+        <h2 id="contact-heading">Contact</h2>
+        <ul class="contact-list">
+          <li>
+            <span class="label">Email</span>
+            {
+              isPlaceholder(profile.contact.email) ? (
+                <span class="placeholder">{profile.contact.email}</span>
+              ) : (
+                <a href={`mailto:${profile.contact.email}`}>{profile.contact.email}</a>
+              )
+            }
+          </li>
+          {
+            profile.contact.links.map((link) => (
+              <li>
+                <span class="label">{link.label}</span>
+                {isPlaceholder(link.url) ? (
+                  <span class="placeholder">{link.url}</span>
+                ) : (
+                  <a href={link.url} rel="me noopener noreferrer">
+                    {link.url.replace(/^https?:\/\//, '')}
+                  </a>
+                )}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+  </main>
+</Layout>

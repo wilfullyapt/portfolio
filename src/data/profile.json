@@ -1,0 +1,88 @@
+{
+  "name": "William",
+  "headline": "TODO: add a headline",
+  "shortBio": "Python, NodeJS, PHP, MySQL, ML.",
+  "about": "TODO: add a detailed bio",
+  "location": "USA",
+  "skills": [
+    {
+      "category": "Languages",
+      "items": [
+        "Python",
+        "NodeJS",
+        "PHP"
+      ]
+    },
+    {
+      "category": "Data",
+      "items": [
+        "MySQL"
+      ]
+    },
+    {
+      "category": "Machine Learning",
+      "items": [
+        "ML"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Kardashev Index",
+      "description": "Thermodynamic ranking of companies in Kardashev terms. Joules, not vibes.",
+      "url": "https://github.com/wilfullyapt/kardashev-index",
+      "language": "Python"
+    },
+    {
+      "name": "Artificial Modular Intelligence",
+      "description": "AMI is an AI powered by plug and play Headspaces that define its ability to interact and its responsibilities.",
+      "url": "https://github.com/wilfullyapt/ArtificialModularIntelligence",
+      "language": "Python"
+    },
+    {
+      "name": "MMM-Markdown",
+      "description": "Display markdown files on your MagicMirror",
+      "url": "https://github.com/wilfullyapt/MMM-Markdown",
+      "language": "CSS"
+    },
+    {
+      "name": "mobile-ami",
+      "description": "A mobile, rechargeable, offline, self updating, AI Voice assistent.",
+      "url": "https://github.com/wilfullyapt/mobile-ami",
+      "language": "Python"
+    },
+    {
+      "name": "resume-rewriter",
+      "description": "Context Aware LLM Resume Rewriter",
+      "url": "https://github.com/wilfullyapt/resume-rewriter",
+      "language": "Python"
+    },
+    {
+      "name": "cluster-mcp",
+      "description": "proxmox-mcp: FastAPI wrapper providing repeatable status, inventory, and health tools for Proxmox clusters (Ceph, nodes, VMs, tasks). LXC + Docker deploy with auto-restart and one-line updates.",
+      "url": "https://github.com/wilfullyapt/cluster-mcp",
+      "language": "Python"
+    }
+  ],
+  "experience": [
+    {
+      "role": "TODO: add role or title",
+      "organization": "TODO: add employer or organization",
+      "dates": "TODO: add dates",
+      "summary": "TODO: add experience"
+    }
+  ],
+  "contact": {
+    "email": "TODO: add email",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/wilfullyapt"
+      },
+      {
+        "label": "LinkedIn",
+        "url": "TODO: add LinkedIn URL"
+      }
+    ]
+  }
+}

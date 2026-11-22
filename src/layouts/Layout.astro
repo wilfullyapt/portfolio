@@ -1,0 +1,62 @@
+---
+import '../styles/global.css';
+import { isPlaceholder } from '../lib/placeholders';
+
+interface Props {
+  title: string;
+  description: string;
+  name: string;
+}
+
+const { title, description, name } = Astro.props;
+const safeDescription = isPlaceholder(description)
+  ? `${name}'s personal and professional skills portfolio.`
+  : description;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={safeDescription} />
+    <meta name="author" content={name} />
+    <meta name="theme-color" content="#141311" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f4f1ec" media="(prefers-color-scheme: light)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={safeDescription} />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={safeDescription} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="inner">
+        <a class="wordmark" href="#top">{name}</a>
+        <nav class="nav" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <slot />
+    <footer class="site-footer">
+      <div class="inner">
+        <p>© {new Date().getFullYear()} {name}</p>
+        <p>
+          Source on <a href="https://github.com/wilfullyapt/portfolio">GitHub</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
